@@ -6,7 +6,7 @@
   <title>My Cart & Checkout</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body class="bg-light">
 
@@ -43,9 +43,41 @@
         <div class="fw-bold text-dark ms-3 price">$1.89</div>
         <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
       </div>
-    </div>
+        <div class="cart-item d-flex align-items-center py-3 border-bottom" data-price="4.99">
+        <img src="images/bananas.jpeg" alt="Bananas" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Organic Bananas</div>
+          <div class="text-muted small">12kg, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$3</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
 
-  <div class=" bg-white border-top p-3">
+      <div class="cart-item d-flex align-items-center py-3" data-price="1.89">
+        <img src="images/ginger.jpeg" alt="Ginger" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Ginger</div>
+          <div class="text-muted small">250 gm, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$2.99</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
+    </div>
+    </div><br><br><br>
+
+    
+
+  <div class="fixed-bottom bg-white border-top p-3">
   <button class="btn btn-success w-100 fw-bold mb-5" id="placeOrderBtn">Place Order</button>
 </div>
 
@@ -81,30 +113,6 @@
     <a href="#" class="text-decoration-underline">Terms And Conditions</a>
   </p>
 </div>
-   <nav class="navbar navbar-light bg-white fixed-bottom py-2 shadow-lg">
-  <div class="container-fluid justify-content-around">
-    <a class="nav-link text-success d-flex flex-column align-items-center active" id="shop-tab" data-bs-toggle="tab" href="#shop-content" role="tab" aria-controls="shop-content" aria-selected="true">
-      <i class="bi bi-shop fs-4"></i>
-      <small>Shop</small>
-    </a>
-    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
-      <i class="bi bi-search fs-4"></i>
-      <small>Explore</small>
-    </a>
-    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
-      <i class="bi bi-cart fs-4"></i>
-      <small>Cart</small>
-    </a>
-    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
-      <i class="bi bi-heart fs-4"></i>
-      <small>Favourite</small>
-    </a>
-    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
-      <i class="bi bi-person fs-4"></i>
-      <small>Account</small>
-    </a>
-  </div>
-</nav>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script src="seydou.js"></script>
