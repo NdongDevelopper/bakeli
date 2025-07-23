@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boissons</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light pb-5">
+   <div class="d-flex justify-content-between align-items-center mb-2">
+            <span>9:41</span>
+            <div>
+                <i class="bi bi-reception-4"></i>
+                <i class="bi bi-wifi"></i>
+                <i class="bi bi-battery-full"></i>
+            </div>
+        </div>
+        
+<div class="container py-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="btn btn-outline-secondary btn-sm rounded-circle">&larr;</button>
+    <h5 class="mb-0 fw-bold">Beverages</h5>
+    <button class="btn btn-outline-secondary btn-sm rounded-circle">&#9881;</button>
+  </div>
+
+  <div class="row g-3" id="productList">
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/diet coke.jpeg" alt="Diet Coke" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Diet Coke<br><small>355ml, Price</small></div>
+        <div class="fw-bold my-2">$1.99</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="diet-coke">−</button>
+          <span class="mx-2 fw-bold" id="count-diet-coke">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="diet-coke">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/sprite.jpeg" alt="Sprite" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Sprite<br><small>325ml, Price</small></div>
+        <div class="fw-bold my-2">$1.50</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="sprite">−</button>
+          <span class="mx-2 fw-bold" id="count-sprite">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="sprite">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/apple juice.jpeg" alt="Apple Juice" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Apple Juice<br><small>2L, Price</small></div>
+        <div class="fw-bold my-2">$15.99</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="apple-juice">−</button>
+          <span class="mx-2 fw-bold" id="count-apple-juice">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="apple-juice">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/orange juice.jpeg" alt="Orange Juice" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Orange Juice<br><small>2L, Price</small></div>
+        <div class="fw-bold my-2">$15.99</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="orange-juice">−</button>
+          <span class="mx-2 fw-bold" id="count-orange-juice">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="orange-juice">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/coca cola.jpeg" alt="Coca Cola" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Coca Cola<br><small>325ml, Price</small></div>
+        <div class="fw-bold my-2">$4.99</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="coca-cola">−</button>
+          <span class="mx-2 fw-bold" id="count-coca-cola">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="coca-cola">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+      <div class="border rounded p-3 bg-white text-center h-100">
+        <img src="produits/pepsi.jpeg" alt="Pepsi" class="img-fluid mb-2" style="height:90px; object-fit:contain;">
+        <div>Pepsi<br><small>330ml, Price</small></div>
+        <div class="fw-bold my-2">$4.99</div>
+        <div>
+          <button class="btn btn-danger rounded-circle px-3 btn-subtract" data-product="pepsi">−</button>
+          <span class="mx-2 fw-bold" id="count-pepsi">0</span>
+          <button class="btn btn-success rounded-circle px-3 btn-add" data-product="pepsi">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<nav class="navbar navbar-light bg-white fixed-bottom py-2 shadow-lg">
+  <div class="container-fluid justify-content-around">
+    <a class="nav-link text-success d-flex flex-column align-items-center active" id="shop-tab" data-bs-toggle="tab" href="#shop-content" role="tab" aria-controls="shop-content" aria-selected="true">
+      <i class="bi bi-shop fs-4"></i>
+      <small>Shop</small>
+    </a>
+    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
+      <i class="bi bi-search fs-4"></i>
+      <small>Explore</small>
+    </a>
+    <a class="nav-link text-dark d-flex flex-column align-items-center" href="seydou2.html">
+      <i class="bi bi-cart fs-4"></i>
+      <small>Cart</small>
+    </a>
+    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
+      <i class="bi bi-heart fs-4"></i>
+      <small>Favourite</small>
+    </a>
+    <a class="nav-link text-dark d-flex flex-column align-items-center" href="#">
+      <i class="bi bi-person fs-4"></i>
+      <small>Account</small>
+    </a>
+  </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="seydou.js"></script>
+</body>
+</html>

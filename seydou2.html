@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Cart & Checkout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+
+  <div class="container-fluid my-4 p-4 rounded shadow-sm bg-white">
+    <h2 class="text-center fw-bold mb-4">My Cart</h2>
+
+    <div id="cart-items">
+      <div class="cart-item d-flex align-items-center py-3 border-bottom" data-price="4.99">
+        <img src="images/pepper.jpg" alt="Bell Pepper Red" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Bell Pepper Red</div>
+          <div class="text-muted small">1kg, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$4.99</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
+
+      <div class="cart-item d-flex align-items-center py-3" data-price="1.89">
+        <img src="images/eggs.jpg" alt="Egg Chicken Red" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Egg Chicken Red</div>
+          <div class="text-muted small">4pcs, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$1.89</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
+        <div class="cart-item d-flex align-items-center py-3 border-bottom" data-price="4.99">
+        <img src="images/bananas.jpeg" alt="Bananas" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Organic Bananas</div>
+          <div class="text-muted small">12kg, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$3</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
+
+      <div class="cart-item d-flex align-items-center py-3" data-price="1.89">
+        <img src="images/ginger.jpeg" alt="Ginger" class="img-fluid me-3" style="max-width: 80px; max-height: 80px;">
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark">Ginger</div>
+          <div class="text-muted small">250 gm, Price</div>
+        </div>
+        <div class="d-flex align-items-center border rounded overflow-hidden quantity">
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 minus">&minus;</button>
+          <span class="px-2 fw-bold count">1</span>
+          <button class="btn btn-sm btn-light border-0 rounded-0 p-2 plus">&plus;</button>
+        </div>
+        <div class="fw-bold text-dark ms-3 price">$2.99</div>
+        <button type="button" class="btn-close ms-3 remove-item" aria-label="Close"></button>
+      </div>
+    </div>
+    </div><br><br><br>
+
+    
+
+  <div class="fixed-bottom bg-white border-top p-3">
+  <button class="btn btn-success w-100 fw-bold mb-5" id="placeOrderBtn">Place Order</button>
+</div>
+
+<div id="checkoutPanel" class="position-fixed bottom-0 start-0 end-0 bg-white shadow-lg p-4 rounded-top-4 animate__animated d-none" style="z-index: 1050; max-height: 90vh; overflow-y: auto;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0">Panier</h5>
+    <button id="closePanelBtn" class="btn btn-light btn-sm">&times;</button>
+  </div>
+
+  <div id="checkoutItems"></div>
+
+  <ul class="list-unstyled mt-3">
+    <li class="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <span>Delivery</span>
+      <a href="#">Select Method &rsaquo;</a>
+    </li>
+    <li class="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <span>Payment</span>
+      <a href="#"><img src="images/icon.png" alt="Flag" style="width:20px;"> &rsaquo;</a>
+    </li>
+    <li class="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <span>Promo Code</span>
+      <a href="#">Pick discount &rsaquo;</a>
+    </li>
+    <li class="d-flex justify-content-between align-items-center py-3">
+      <strong>Total Cost</strong>
+      <strong>$<span id="totalCost">0.00</span></strong>
+    </li>
+  </ul>
+
+  <p class="text-muted small">
+    By placing an order you agree to our<br>
+    <a href="#" class="text-decoration-underline">Terms And Conditions</a>
+  </p>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="seydou.js"></script>
+</body>
+</html>
