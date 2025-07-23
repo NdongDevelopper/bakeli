@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header-icons .btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+        }
+        .product-image-container {
+            background-color: #ffffff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px; /* Space for indicators */
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        .image-indicators {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .image-indicator {
+            height: 8px;
+            width: 8px;
+            background-color: #ced4da;
+            border-radius: 50%;
+            margin: 0 4px;
+        }
+        .image-indicator.active {
+            background-color: #28a745;
+        }
+        .product-info {
+            padding: 20px;
+            background-color: #ffffff;
+            margin-top: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 120px;
+        }
+        .quantity-control button {
+            background-color: #f8f9fa;
+            border: none;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            color: #343a40;
+        }
+        .quantity-control input {
+            border: none;
+            text-align: center;
+            width: 40px;
+            font-size: 1.1rem;
+            -moz-appearance: textfield; /* Firefox */
+            appearance: textfield; /* Standard */
+        }
+        .quantity-control input::-webkit-outer-spin-button,
+        .quantity-control input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .detail-section {
+            background-color: #ffffff;
+            margin-top: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            padding: 15px 20px;
+        }
+        .detail-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .detail-section-body {
+            padding-top: 10px;
+            color: #6c757d;
+        }
+        .add-to-basket-btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            padding: 12px 0;
+            width: 100%;
+            border: none;
+        }
+        .rating .fa-star {
+            color: #ffc107;
+        }
+        .price-heart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid p-0">
+        <div class="d-flex justify-content-between align-items-center p-3 header-icons">
+            <button class="btn"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn"><i class="fas fa-upload"></i></button>
+        </div>
+
+        <div class="product-image-container">
+                        <img src="redapple.jpeg" alt="Naturel Red Apple" class="product-image">
+            <div class="image-indicators">
+                <div class="image-indicator active"></div>
+                <div class="image-indicator"></div>
+                <div class="image-indicator"></div>
+            </div>
+        </div>
+
+        <div class="product-info mx-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h1 class="product-title m-0">Naturel Red Apple</h1>
+                    <p class="text-muted m-0">1kg, Price</p>
+                </div>
+                <button class="btn btn-lg text-danger"><i class="far fa-heart"></i></button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="quantity-control">
+                    <button id="decreaseQuantity">-</button>
+                    <input type="number" value="1" min="1" id="quantityInput">
+                    <button id="increaseQuantity">+</button>
+                </div>
+                <div class="product-price">
+                    $4.99
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section mx-3 mt-3">
+            <div class="detail-section-header" data-bs-toggle="collapse" data-bs-target="#productDetailBody" aria-expanded="true" aria-controls="productDetailBody">
+                <span>Product Detail</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="collapse show detail-section-body" id="productDetailBody">
+                <p>Apples Are Nutritious. Apples May Be Good For Weight Loss. Apples May Be Good For Your Heart. As Part Of A Healthful And Varied Diet.</p>
+            </div>
+        </div>
+
+        <div class="detail-section mx-3">
+            <div class="detail-section-header">
+                <span>Nutritions</span>
+                <span class="text-muted me-2">100gr</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="detail-section mx-3">
+            <div class="detail-section-header">
+                <span>Review</span>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="p-3">
+            <button class="add-to-basket-btn">Add To Basket</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const decreaseBtn = document.getElementById('decreaseQuantity');
+            const increaseBtn = document.getElementById('increaseQuantity');
+            const quantityInput = document.getElementById('quantityInput');
+
+            decreaseBtn.addEventListener('click', function() {
+                let currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+
+            increaseBtn.addEventListener('click', function() {
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+        });
+    </script>
+</body>
+</html>

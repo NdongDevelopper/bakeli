@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sélection de la Localisation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Couleur de fond légère */
+        }
+        .header-icons .btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+        }
+        .image-container { /* Style similaire à product-image-container */
+            background-color: #ffffff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px; /* Espace pour un éventuel indicateur si plusieurs images */
+            padding-top: 40px; /* Ajouté pour espace au-dessus de l'image */
+        }
+        .location-image {
+            max-width: 70%; /* Ajusté pour une meilleure proportion visuelle */
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        .info-card { /* Style similaire à product-info ou detail-section */
+            background-color: #ffffff;
+            margin-top: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+        .submit-btn { /* Style similaire à add-to-basket-btn */
+            background-color: #28a745; /* Vert */
+            color: #ffffff;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            padding: 12px 0;
+            width: 100%;
+            border: none;
+            margin-top: 20px; /* Espace au-dessus du bouton */
+        }
+        .form-control-custom { /* Pour les champs de sélection déroulants */
+            border: none;
+            border-bottom: 1px solid #ced4da;
+            border-radius: 0; /* Pas de coins arrondis pour le style souligné */
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: none; /* Supprime l'ombre au focus */
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .form-label-custom {
+            font-size: 0.9rem;
+            color: #6c757d; /* Texte grisé pour le label */
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid p-0">
+        <div class="d-flex justify-content-between align-items-center p-3 header-icons">
+            <button class="btn"><i class="fas fa-arrow-left"></i></button>
+            <!-- <div class="d-flex gap-2">
+                <i class="fas fa-signal text-muted"></i>
+                <i class="fas fa-wifi text-muted"></i>
+                <i class="fas fa-battery-full text-muted"></i>
+            </div> -->
+        </div>
+
+        <div class="image-container text-center pt-5 pb-4">
+            <img src="Mapicons .jpeg" alt="Localisation" class="location-image mb-4">
+            <h2 class="fw-bold mb-2">Select Your Location</h2>
+            <p class="text-muted px-4">Switch on your location to stay in tune with what's happening in your area</p>
+        </div>
+
+        <div class="info-card mx-3 mb-4">
+            <div class="mb-4">
+                <label for="yourZone" class="form-label-custom">Your Zone</label>
+                <select class="form-select form-control-custom" id="yourZone" aria-label="Your Zone">
+                    <option selected>Rufisque</option>
+                    <option value="1">Keur massar</option>
+                    <option value="2">pikine</option>
+                    <option value="3">guediewaye</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label for="yourArea" class="form-label-custom">Your Area</label>
+                <select class="form-select form-control-custom" id="yourArea" aria-label="Your Area">
+                    <option selected>Types of your area</option>
+                    <option value="1">Area 1</option>
+                    <option value="2">Area 2</option>
+                    <option value="3">Area 3</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn submit-btn">Submit</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
