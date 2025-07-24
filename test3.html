@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saisie du code à 4 chiffres</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span></span>
+    <!-- <div>
+      <i class="fas fa-signal"></i>
+      <i class="fas fa-wifi"></i>
+      <i class="fas fa-battery-full"></i>
+    </div> -->
+  </div>
+
+  <div class="container py-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-outline-secondary btn-sm rounded-circle"><i class="fas fa-chevron-left"></i></button>
+      <h5 class="mb-0 fw-bold">Entrez votre code</h5>
+      <div class="btn btn-outline-secondary btn-sm rounded-circle invisible">&nbsp;</div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <h3 class="card-title fs-4 fw-bold mb-4">Entrez votre code à 4 chiffres</h3>
+        
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-secondary mb-1">Code</label>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="border-bottom border-2 py-2 px-3 text-center" style="width: 23%">
+              <span class="fs-1 fw-bold" id="char1">-</span>
+            </div>
+            <div class="border-bottom border-2 py-2 px-3 text-center" style="width: 23%">
+              <span class="fs-1 fw-bold" id="char2">-</span>
+            </div>
+            <div class="border-bottom border-2 py-2 px-3 text-center" style="width: 23%">
+              <span class="fs-1 fw-bold" id="char3">-</span>
+            </div>
+            <div class="border-bottom border-2 py-2 px-3 text-center" style="width: 23%">
+              <span class="fs-1 fw-bold" id="char4">-</span>
+            </div>
+          </div>
+          <input type="hidden" id="codeInput" value="">
+        </div>
+
+        <a href="#" class="text-success fw-semibold text-decoration-none" id="resendCodeLink">Renvoyer le code</a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-3 p-3 shadow-sm">
+      <div class="row g-2 mb-2">
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="1">1</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="2">
+            2<br>
+            <small class="fs-6 text-muted">ABC</small>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="3">
+            3<br>
+            <small class="fs-6 text-muted">DEF</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-2">
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="4">
+            4<br>
+            <small class="fs-6 text-muted">GHI</small>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="5">
+            5<br>
+            <small class="fs-6 text-muted">JKL</small>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="6">
+            6<br>
+            <small class="fs-6 text-muted">MNO</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-2">
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="7">
+            7<br>
+            <small class="fs-6 text-muted">PQRS</small>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="8">
+            8<br>
+            <small class="fs-6 text-muted">TUV</small>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="9">
+            9<br>
+            <small class="fs-6 text-muted">WXYZ</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-2">
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-4" data-value="+*#">+*#</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-3 fw-bold" data-value="0">0</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-light w-100 py-3 fs-4" data-value="delete">
+            <i class="fas fa-backspace"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed-bottom p-4 text-end">
+    <button class="btn btn-success rounded-circle p-3" id="nextButton" style="width: 60px; height: 60px">
+      <i class="fas fa-chevron-right fs-4"></i>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const codeInput = document.getElementById('codeInput');
+      const codeChars = [
+        document.getElementById('char1'),
+        document.getElementById('char2'),
+        document.getElementById('char3'),
+        document.getElementById('char4')
+      ];
+      const keyboardButtons = document.querySelectorAll('[data-value]');
+      const nextButton = document.getElementById('nextButton');
+      const resendCodeLink = document.getElementById('resendCodeLink');
+      const maxCodeLength = 4;
+
+      function updateCodeDisplay() {
+        const currentCode = codeInput.value;
+        for (let i = 0; i < maxCodeLength; i++) {
+          codeChars[i].textContent = i < currentCode.length ? currentCode[i] : '-';
+        }
+        
+        if (currentCode.length === maxCodeLength) {
+          nextButton.classList.remove('btn-secondary');
+          nextButton.classList.add('btn-success');
+        } else {
+          nextButton.classList.remove('btn-success');
+          nextButton.classList.add('btn-secondary');
+        }
+      }
+
+      keyboardButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const value = this.getAttribute('data-value');
+          let currentCode = codeInput.value;
+
+          if (value === 'delete') {
+            codeInput.value = currentCode.slice(0, -1);
+          } else if (value !== '+*#' && currentCode.length < maxCodeLength) {
+            codeInput.value += value;
+          }
+          updateCodeDisplay();
+        });
+      });
+
+      nextButton.addEventListener('click', function() {
+        if (codeInput.value.length === maxCodeLength) {
+          alert('Code saisi : ' + codeInput.value);
+        }
+      });
+
+      resendCodeLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Le code a été renvoyé !');
+      });
+
+      updateCodeDisplay();
+    });
+  </script>
+</body>
+</html>

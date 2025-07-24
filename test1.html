@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie du numéro de téléphone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column; /* Utiliser column pour empiler les éléments */
+            min-height: 100vh;
+            font-family: Arial, sans-serif; /* Police similaire à la capture d'écran */
+        }
+        .header-bar {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .header-bar .back-icon {
+            font-size: 1.5rem;
+            color: #333;
+            margin-right: 15px;
+        }
+        .main-content {
+            flex-grow: 1; /* Permet au contenu principal de prendre l'espace restant */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 0 0 10px 10px; /* Bords arrondis en bas si nécessaire */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pour pousser le clavier vers le bas */
+        }
+        .title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .input-group .form-select {
+            flex-grow: 0;
+            width: auto;
+            min-width: 120px;
+            max-width: 150px;
+            border-right: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .input-group .form-control {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            font-size: 1.2rem; /* Taille de police plus grande pour le numéro */
+            padding: 10px 15px;
+        }
+        .numeric-keyboard {
+            width: 100%;
+            background-color: #e0e0e0; /* Couleur de fond du clavier */
+            padding: -10px 0;
+            border-top: 1px solid #ccc;
+            flex-shrink: 0; /* Empêche le clavier de rétrécir */
+        }
+        .keyboard-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px; /* Espace entre les rangées */
+        }
+        .keyboard-button {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            width: 100px; /* Taille fixe des boutons pour un clavier */
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none; /* Empêche la sélection de texte */
+            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .keyboard-button:active {
+            background-color: #f0f0f0; /* Effet de clic */
+        }
+        .keyboard-button.action-button {
+            font-size: 1.2rem;
+            color: #777;
+        }
+        .keyboard-button .small-text {
+            font-size: 0.7rem;
+            font-weight: normal;
+            color: #999;
+            margin-top: 2px;
+        }
+        .next-button-container {
+            display: flex;
+            justify-content: flex-end; /* Aligner à droite */
+            padding: 20px;
+            background-color: transparent; /* Pour éviter un fond blanc en bas */
+            position: sticky; /* Rendre le bouton "suivant" sticky */
+            bottom: 0; /* Coller en bas */
+            width: 100%;
+            z-index: 1000; /* Assurer qu'il est au-dessus des autres éléments */
+        }
+        .next-button {
+            background-color: #28a745; /* Couleur verte similaire à la capture */
+            color: #fff;
+            border-radius: 50%; /* Bouton rond */
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .next-button:hover {
+            background-color: #218838;
+        }
+
+        /* Média queries pour la réactivité du clavier (ex: pour les écrans plus petits) */
+        @media (max-width: 576px) {
+            .keyboard-button {
+                width: 28%; /* Pour que les boutons soient un peu plus grands sur mobile */
+                height: 55px;
+            }
+            .numeric-keyboard {
+                padding: 5px 0;
+            }
+            .keyboard-row {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <i class="fas fa-chevron-left back-icon"></i>
+        </div>
+
+    <div class="main-content">
+        <div>
+            <h3 class="title">Entrez votre numéro de téléphone portable</h3>
+            <div class="mb-3">
+                <label for="mobileNumber" class="form-label">Numéro de téléphone portable</label>
+                <div class="input-group">
+                    <select class="form-select" id="countryCodeSelect">
+                        <option value="+880" data-flag="🇧🇩" selected>🇧🇩 +880 (Bangladesh)</option>
+                        <option value="+1" data-flag="🇺🇸">🇺🇸 +1 (USA)</option>
+                        <option value="+44" data-flag="🇬🇧">🇬🇧 +44 (Royaume-Uni)</option>
+                        <option value="+33" data-flag="🇫🇷">🇫🇷 +33 (France)</option>
+                        <option value="+221" data-flag="🇸🇳">🇸🇳 +221 (Sénégal)</option>
+                        <option value="+212" data-flag="🇲🇦">🇲🇦 +212 (Maroc)</option>
+                        <option value="+225" data-flag="🇨🇮">🇨🇮 +225 (Côte d'Ivoire)</option>
+                        <option value="+237" data-flag="🇨🇲">🇨🇲 +237 (Cameroun)</option>
+                        <option value="+243" data-flag="🇨🇩">🇨🇩 +243 (R.D. Congo)</option>
+                        </select>
+                    <input type="tel" class="form-control" id="mobileNumberInput" placeholder="Entrez le numéro" readonly>
+                    </div>
+            </div>
+        </div>
+
+        <div class="numeric-keyboard mt-auto">
+            <div class="keyboard-row">
+                <div class="keyboard-button" data-value="1">1</div>
+                <div class="keyboard-button" data-value="2">2<span class="small-text">ABC</span></div>
+                <div class="keyboard-button" data-value="3">3<span class="small-text">DEF</span></div>
+            </div>
+            <div class="keyboard-row">
+                <div class="keyboard-button" data-value="4">4<span class="small-text">GHI</span></div>
+                <div class="keyboard-button" data-value="5">5<span class="small-text">JKL</span></div>
+                <div class="keyboard-button" data-value="6">6<span class="small-text">MNO</span></div>
+            </div>
+            <div class="keyboard-row">
+                <div class="keyboard-button" data-value="7">7<span class="small-text">PQRS</span></div>
+                <div class="keyboard-button" data-value="8">8<span class="small-text">TUV</span></div>
+                <div class="keyboard-button" data-value="9">9<span class="small-text">WXYZ</span></div>
+            </div>
+            <div class="keyboard-row">
+                <div class="keyboard-button action-button" data-value="+*#">+*#</div>
+                <div class="keyboard-button" data-value="0">0</div>
+                <div class="keyboard-button action-button" data-value="delete"><i class="fas fa-backspace"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-button-container">
+        <div class="next-button" id="nextButton">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNumberInput = document.getElementById('mobileNumberInput');
+            const countryCodeSelect = document.getElementById('countryCodeSelect');
+            const keyboardButtons = document.querySelectorAll('.keyboard-button');
+            const nextButton = document.getElementById('nextButton');
+
+            // Initialiser l'input avec l'indicatif sélectionné
+            mobileNumberInput.value = countryCodeSelect.value;
+
+            // Mettre à jour l'input lorsque l'indicatif de pays change
+            countryCodeSelect.addEventListener('change', function() {
+                mobileNumberInput.value = this.value; // Réinitialise avec le nouvel indicatif
+            });
+
+            // Gérer les clics sur les boutons du clavier
+            keyboardButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    let currentNumber = mobileNumberInput.value;
+
+                    if (value === 'delete') {
+                        // Supprimer le dernier caractère, mais ne pas supprimer l'indicatif
+                        const selectedCode = countryCodeSelect.value;
+                        if (currentNumber.length > selectedCode.length) {
+                             mobileNumberInput.value = currentNumber.slice(0, -1);
+                        }
+                    } else if (value === '+*#') {
+                        // Ajouter le caractère spécial si nécessaire, ou gérer séparément
+                        mobileNumberInput.value += value;
+                    } else {
+                        // Ajouter le chiffre
+                        mobileNumberInput.value += value;
+                    }
+                });
+            });
+
+            // Gérer le clic sur le bouton Suivant
+            nextButton.addEventListener('click', function() {
+                const fullNumber = mobileNumberInput.value;
+                const selectedCode = countryCodeSelect.value;
+
+                // Simple validation (exemple: s'assurer qu'un numéro a été saisi au-delà de l'indicatif)
+                if (fullNumber.length > selectedCode.length) {
+                    alert('Numéro saisi : ' + fullNumber + '\nIndicatif : ' + selectedCode);
+                    // Ici, vous enverriez le numéro au serveur ou navigueriez vers la prochaine étape
+                } else {
+                    alert('Veuillez entrer un numéro de téléphone.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
