@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const placeOrderBtn = document.getElementById("placeOrderBtn");
+   const placeOrderBtn = document.getElementById("placeOrderBtn");
   const checkoutPanel = document.getElementById("checkoutPanel");
   const closePanelBtn = document.getElementById("closePanelBtn");
   const totalCostEl = document.getElementById("totalCost");
